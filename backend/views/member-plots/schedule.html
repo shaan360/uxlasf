@@ -1,0 +1,81 @@
+<?php
+$payment_total = $model->paymentTotal();
+$plan_type = $model->planType;
+$play_payment_type = $model->plan_payment_type;
+//var_dump($payment_total);
+//var_dump($plan_type);exit;
+if ($play_payment_type == 1) {
+    $number_of_payments = round(($plan_type->price - $plan_type->downpayment) / $plan_type->quaterly_installment);
+}
+if($play_payment_type == 0){
+    $number_of_payments = round(($plan_type->price - $plan_type->downpayment) / $plan_type->months_36_installment);
+}
+//var_dump($number_of_payments);
+$price_total = 0;
+$paid_total = 0;
+$balance_total = 0;
+$paid = 0;
+$serial = 1;
+if ($payment_total >= $plan_type->downpayment) {
+    $paid = $plan_type->downpayment;
+   
+    $payment_total = $payment_total - $paid;
+} else {
+    $paid = $payment_total;
+    //var_dump($paid);exit;
+    $payment_total = 0;
+}
+$balance = $plan_type->downpayment - $paid;
+$price_total +=$plan_type->downpayment;
+$paid_total +=$paid;
+$balance_total+=$balance;
+?>
+<div class="col-md-12 custom-box">
+    
+    <a href="#" class="btn btn-success" id="print" onclick="printscdule()" style="float: right">Print</a><br>
+    <div id="print-sc">
+    <div class="widget-user">
+        <h2>Payment Schedule</h2>
+        <table class="table table-striped table-bordered"><thead>
+                <tr><th>Serial</th><th>Outstanding Payment</th><th>Paid</th><th>Balance</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?= $serial ?></td>
+                    <td><?= $plan_type->downpayment ?></td>
+                    <td><?= $paid ?></td>
+                    <td><?= $balance ?></td>
+                </tr>
+                <?php $count=2;
+                for($i = 1; $i <= $number_of_payments; $i++) { ?>
+                    <?php
+                    if ($payment_total >= ($play_payment_type==1?$plan_type->quaterly_installment:$plan_type->months_36_installment)) {
+                        $paid = $play_payment_type==1?$plan_type->quaterly_installment:$plan_type->months_36_installment;
+                        $payment_total = $payment_total - $paid;
+                    } else {
+                        $paid = $payment_total;
+                        $payment_total = 0;
+                    }
+                    $balance = ($play_payment_type==1?$plan_type->quaterly_installment:$plan_type->months_36_installment) - $paid;
+                    $price_total +=($play_payment_type==1?$plan_type->quaterly_installment:$plan_type->months_36_installment);
+                    $paid_total +=$paid;
+                    $balance_total+=$balance;
+                    ?>
+                    <tr>
+                        <td><?= $count ?></td>
+                        <td><?= $play_payment_type==1?$plan_type->quaterly_installment:$plan_type->months_36_installment ?></td>
+                        <td><?= $paid ?></td>
+                        <td><?= $balance ?></td>
+                    </tr>
+                    <?php
+                    $count++;
+                    ?>
+                <?php } ?>
+                <tr>
+                    <td>Total</td>
+                    <th><?= $price_total ?></th>
+                    <th><?= $paid_total ?></th>
+                    <th><?= $balance_total ?></th>
+                </tr>
+            </tbody>
+        </table>
