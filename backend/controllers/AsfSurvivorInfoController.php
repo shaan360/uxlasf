@@ -78,10 +78,13 @@ class AsfSurvivorInfoController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {
-        $model = new AsfSurvivorInfo();
+    {  
+        
+        
+        //var_dump($pic);exit;
+          $model = new AsfSurvivorInfo();
           $loaded = $model->load(Yii::$app->request->post());
-          var_dump($loaded);
+         // var_dump($loaded);
         if ($loaded) {
         
             $pic = Yii::$app->request->post('AsfSurvivorInfo');

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\AsfSurvivorInfo */
 
-$this->title = $model->id;
+$this->title = $model->first_name;
 $this->params['breadcrumbs'][] = ['label' => 'Asf Survivor Infos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -14,15 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        
     </p>
-
+    <div class="col-md-8">
     <?php echo DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -90,18 +84,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'police_station',
             'other_document',
             'medical_legal_certificate',
-            'picture',
-            'fir',
+           // 'picture',
+            //'fir',
             'comments_remarks:ntext',
-            'pictureFile',
-            'firFile',
-            'medicalFile',
-            'otherFile',
+            //'pictureFile',
+            //'firFile',
+            //'file_path',
+            //'medicalFile',
+            //'otherFile',
             'court_settlement',
             'settlement_agreement',
             'settlement_monetary',
             'monetary_amount',
         ],
     ]) ?>
-
+    </div>
+    <div class="col-md-4">
+        
+        <div style="padding:20px;background:#f5f5f5;border:solid 1px #ccc;">
+        <img style="width:100%;" src="<?= $model->file_path."/".$model->pictureFile ?>" />
+        </div>
+    </div>
 </div>

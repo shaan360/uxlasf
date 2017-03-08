@@ -8,12 +8,15 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-legal-aid-form">
+<div class="asf-legal-aid-form custom-box">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->errorSummary($model); ?>
-
+<div class="box box-success">
+       
+    <div class="row">
+        <div class="col-md-6">
     <?php echo $form->field($model, 'survivor_id')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'asf_legal_input')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
@@ -36,6 +39,8 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'legal_prosecuted')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
 
+        </div>
+        <div class="col-md-6">
     <?php echo $form->field($model, 'legal_court_case')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
 
     <?php echo $form->field($model, 'legal_court_name')->textInput(['maxlength' => true]) ?>
@@ -57,11 +62,12 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'legal_case_withdrawn')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'comments_remarks')->textarea(['rows' => 6]) ?>
-
+        </div>
+    </div>
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? 'Submit' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
 </div>

@@ -8,12 +8,17 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-medical-aid-form">
+<div class="asf-medical-aid-form custom-box">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->errorSummary($model); ?>
-
+   <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Survivor Info</h3>
+        </div>
+    <div class="row">
+    <div class="col-md-6 col-bottom-padding">
     <?php echo $form->field($model, 'survivor_id')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'asf_medical_provided')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
@@ -35,12 +40,14 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'assessment')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
 
     <?php echo $form->field($model, 'assessment_date')->textInput(['maxlength' => true]) ?>
-
-    <?php echo $form->field($model, 'procedure')->textInput(['maxlength' => true]) ?>
+     <?php echo $form->field($model, 'procedure')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'associated_procedure')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'procedure_number')->textInput() ?>
+    </div>
+      <div class="col-md-6 col-bottom-padding">
+   
 
     <?php echo $form->field($model, 'assessment_number')->textInput() ?>
 
@@ -70,12 +77,15 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'stay_at_ncru')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
 
-    <?php echo $form->field($model, 'comments_remarks')->textarea(['rows' => 6]) ?>
-
+    
+        </div>
+    </div>
+       <?php echo $form->field($model, 'comments_remarks')->textarea(['rows' => 6]) ?>
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? 'Submit' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
+</div>
 </div>

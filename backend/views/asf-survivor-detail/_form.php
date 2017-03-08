@@ -8,7 +8,7 @@ use kartik\select2\Select2;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-survivor-detail-form">
+<div class="asf-survivor-detail-form custom-box">
     <div class="col-md-12">
     <?php $form = ActiveForm::begin(); ?>
     
