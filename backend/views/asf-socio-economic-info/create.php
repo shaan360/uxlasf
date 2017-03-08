@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\AsfSocioEconomicInfo */
 
-$this->title = 'Create Asf Socio Economic Info';
+$this->title = 'Add Asf Socio Economic Info';
 $this->params['breadcrumbs'][] = ['label' => 'Asf Socio Economic Infos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

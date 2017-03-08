@@ -8,12 +8,16 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-socio-economic-info-form">
+<div class="asf-socio-economic-info-form custom-box">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->errorSummary($model); ?>
-
+    
+   <div class="box box-success">
+       
+    <div class="row">
+    <div class="col-md-6">
     <?php echo $form->field($model, 'survivor_id')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'ncru_date')->textInput(['maxlength' => true]) ?>
@@ -24,35 +28,39 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'ncru_evaluated_by')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'ncru_need_assistance')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'ncru_need_assistance')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'ncru_urgent')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'ncru_urgent')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'sen_education_support')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'sen_education_support')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'sen_vocational_training')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'sen_vocational_training')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'sen_job_placement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'sen_job_placement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'sen_business_plan')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'sen_business_plan')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
-    <?php echo $form->field($model, 'sen_entrepreneurship')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
-
-    <?php echo $form->field($model, 'es_date')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'sen_entrepreneurship')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+    
+      <?php echo $form->field($model, 'es_date')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'es_project')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'es_type')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'jp_place')->textInput(['maxlength' => true]) ?>
+     <?php echo $form->field($model, 'jp_place')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'jp_amount')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'jp_project')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'jp_date')->textInput(['maxlength' => true]) ?>
-
-    <?php echo $form->field($model, 'e_ship_date')->textInput(['maxlength' => true]) ?>
+ <?php echo $form->field($model, 'e_ship_date')->textInput(['maxlength' => true]) ?>
+   
+    </div>
+        <div class="col-md-6">
+  
+  
 
     <?php echo $form->field($model, 'jp_type')->textInput(['maxlength' => true]) ?>
 
@@ -91,11 +99,12 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'bp_place')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'comments_remarks')->textarea(['rows' => 6]) ?>
-
+        </div>
+    </div>
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? 'Submit' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
+   </div>
 </div>

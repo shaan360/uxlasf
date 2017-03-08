@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
+use kartik\select2\Select2;
 /* @var $this yii\web\View */
 /* @var $model common\models\AsfMedicalAid */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -14,30 +14,46 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->errorSummary($model); ?>
    <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">Survivor Info</h3>
-        </div>
+        
     <div class="row">
     <div class="col-md-6 col-bottom-padding">
-    <?php echo $form->field($model, 'survivor_id')->textInput(['maxlength' => true]) ?>
+         <label>Survivor ID</label>
+        <?php
+        echo Select2::widget([
+            'model' => $model,
+            'attribute' => 'survivor_id',
+            'value'=>$model->survivor_id,
+            //'initValueText'=>$model->member->full_name,
+            'options' => ['placeholder' => 'Select Survivor ID ...', 'id' => 'survivor-drop'],
+            'pluginOptions' => [
+                'allowClear' => true,
+                'ajax' => [
+                    'url' => '../asf-medical-aid/survivor-id',
+                    'dataType' => 'json',
+                    'data' => new \yii\web\JsExpression('function(params) { return {q:params.term}; }')
+                ],
+            ],
+        ]);
+        ?>    
+     
 
-    <?php echo $form->field($model, 'asf_medical_provided')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'asf_medical_provided')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'medical_aid_date')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'project')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'asf_nutrition_provided')->dropDownList([ '' => '', 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'asf_nutrition_provided')->dropDownList([ '' => '', 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'asf_nutrition_project')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'asf_physiotherapy_provided')->dropDownList([ '' => '', 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'asf_physiotherapy_provided')->dropDownList([ '' => '', 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'asf_physiotherapy_project')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'treatment_area')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'assessment')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'assessment')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'assessment_date')->textInput(['maxlength' => true]) ?>
      <?php echo $form->field($model, 'procedure')->textInput(['maxlength' => true]) ?>
@@ -51,7 +67,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'assessment_number')->textInput() ?>
 
-    <?php echo $form->field($model, 'medicine')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'medicine')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'medicine_expense')->textInput(['maxlength' => true]) ?>
 
@@ -65,7 +81,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'ncru_admission_date')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'medical_follow_up')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'medical_follow_up')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     <?php echo $form->field($model, 'days_at_hospital')->textInput(['maxlength' => true]) ?>
 
@@ -75,7 +91,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'hospital_discharge_date')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'stay_at_ncru')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'stay_at_ncru')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
 
     
         </div>

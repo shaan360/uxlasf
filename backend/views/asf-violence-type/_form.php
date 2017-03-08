@@ -8,12 +8,12 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-violence-type-form">
+<div class="asf-violence-type-form custom-box">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->errorSummary($model); ?>
-
+    
     <?php echo $form->field($model, 'violence_type')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

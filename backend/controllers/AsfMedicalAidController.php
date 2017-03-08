@@ -118,4 +118,21 @@ class AsfMedicalAidController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+        public function actionSurvivorId($q = null, $id = null) {
+        //\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+     $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new \yii\db\Query;
+            $query->select('id, concat([[survivor_id]]) AS text')
+                    ->from('asf_survivor_info')
+                    ->where(['like', 'survivor_id', $q])
+                    ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        } elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => "Result Not Found"];
+        }
+        echo json_encode($out);
+    }
 }

@@ -56,7 +56,7 @@ use kartik\date\DatePicker;
     
    <?php echo $form->field($model, 'incident_area')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'incident_city')->textInput(['maxlength' => true]) ?>
-  
+  <?=  $form->field($model, 'attack_reason')->dropDownList(common\models\Lookup::items('attack_reason'), ['prompt' => 'Select']) ?>         
      
    </div>
    <div class="col-md-4 col-bottom-padding">
@@ -272,10 +272,10 @@ use kartik\date\DatePicker;
         </div>
        
     <div class="row"> 
-        <div class="col-md-6 col-bottom-padding">
-    <?php echo $form->field($model, 'attack_reason')->textarea(['rows' => 6]) ?>
-        </div>
-        <div class="col-md-6 col-bottom-padding">
+        <div class="col-md-12 col-bottom-padding">
+
+     
+      
     <?php echo $form->field($model, 'comments_remarks')->textarea(['rows' => 6]) ?>
          </div>
         
