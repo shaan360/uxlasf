@@ -32,8 +32,9 @@ use kartik\date\DatePicker;
     <?php echo $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
       
     <?php echo $form->field($model, 'father_name')->textInput(['maxlength' => true]) ?>   
-    <?php echo $form->field($model, 'address_district')->textInput(['maxlength' => true]) ?>    
     <?php echo $form->field($model, 'cnic_availible')->dropDownList(['yes' => 'Yes','no'=>'No'],['prompt'=>'Select']) ?>
+
+  <?php echo $form->field($model, 'address_district')->textInput(['maxlength' => true]) ?>    
    
      <label class="control-label" for="dob">Date Of Birth</label>      
             <?=
@@ -61,7 +62,7 @@ use kartik\date\DatePicker;
    </div>
    <div class="col-md-4 col-bottom-padding">
    <?php echo $form->field($model, 'survivor_id')->textInput(['maxlength' => true]) ?>
-   <label class="control-label" for="member-plot-date">Reported Date</label>  
+   <label class="control-label" for="member-plot-date">Notification Date</label>  
         <?=
         DatePicker::widget([
             'name' => 'asf_reported_day',
@@ -79,11 +80,12 @@ use kartik\date\DatePicker;
     <?php echo $form->field($model, 'middle_name')->textInput(['maxlength' => true]) ?>
    <?php echo $form->field($model, 'address_city')->textInput(['maxlength' => true]) ?>
   <?php echo $form->field($model, 'cnic')->textInput() ?>
-    <?php echo $form->field($model, 'current_age')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'address_street')->textInput(['maxlength' => true]) ?>
+      <?php echo $form->field($model, 'current_age')->textInput(['maxlength' => true]) ?>
+    
     <?php echo $form->field($model, 'incident_province')->dropDownList([ 'Central Punjab' => 'Central Punjab', 'South Punjab' => 'South Punjab', 'Sindh' => 'Sindh', 'Balochistan' => 'Balochistan', 'KPK' => 'KPK', 'AJK' => 'AJK', ], ['prompt' => 'Select']) ?>
    
-   <label class="control-label" for="dob">Incident Date</label>      
+   <label class="control-label" for="dob">Date of Incident</label>      
             <?=
         DatePicker::widget([
             'name' => 'incident_date',
@@ -112,12 +114,40 @@ use kartik\date\DatePicker;
     <?php echo $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'incident_place')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'incident_district')->textInput(['maxlength' => true]) ?>
-    <?php echo $form->field($model, 'before_year')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'attack_number')->textInput() ?>
-     <?php echo $form->field($model, 'attacked_age')->textInput() ?>
+    <?php echo $form->field($model, 'before_year')->textInput(['maxlength' => true]) ?>
+ <?php echo $form->field($model, 'attacked_age')->textInput() ?>
    <?php echo $form->field($model, 'victim_number')->textInput() ?>
 </div>
     </div>
+     <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Panel Code Section & Legal Follow Up Info</h3>
+        </div>     
+         <div class="row">
+           <div class="col-md-4 col-bottom-padding"> 
+        <?php echo $form->field($model, 'follow_up_visit')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+       
+       <?php echo $form->field($model, 'panel_code_section')->dropDownList([ 302 => '302', 307 => '307', 324 => '324', 334 => '334', '336A' => '336A', '336B' => '336B', 337 => '337', '7-ata' => '7-ata', ], ['prompt' => 'Select']) ?>
+     <?php echo $form->field($model, 'fir_registered')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+
+         </div>
+             <div class="col-md-4 col-bottom-padding">
+             <?php echo $form->field($model, 'asf_legel_support')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+
+          <?php echo $form->field($model, 'follow_up_call')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+           <?php echo $form->field($model, 'case_number')->textInput(['maxlength' => true]) ?>
+        
+             </div>  
+             <div class="col-md-4 col-bottom-padding">
+                <?php echo $form->field($model, 'other_panel_section')->textInput(['maxlength' => true]) ?>    
+      
+           <?php echo $form->field($model, 'lawyer_provided')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+          <?php echo $form->field($model, 'lawyer_name')->textInput(['maxlength' => true]) ?>
+
+             </div>  
+         </div>
+     </div>
      <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Other Info</h3>
@@ -126,10 +156,9 @@ use kartik\date\DatePicker;
    
   <div class="col-md-4 col-bottom-padding">
      <?php echo $form->field($model, 'monetary_amount')->textInput(['maxlength' => true]) ?>   
-     <?php echo $form->field($model, 'follow_up_visit')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-     <?php echo $form->field($model, 'panel_code_section')->dropDownList([ 302 => '302', 307 => '307', 324 => '324', 334 => '334', '336A' => '336A', '336B' => '336B', 337 => '337', '7-ata' => '7-ata', ], ['prompt' => 'Select']) ?>
-     <?php echo $form->field($model, 'case_number')->textInput(['maxlength' => true]) ?>
-     <?php echo $form->field($model, 'fir_number')->textInput(['maxlength' => true]) ?>
+     <?php echo $form->field($model, 'case_registered')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+
+    
      <label class="control-label" for="dob">FIR Date</label>      
             <?=
         DatePicker::widget([
@@ -167,7 +196,19 @@ use kartik\date\DatePicker;
         
     <?php echo $form->field($model, 'actual_perpetrator')->textInput(['maxlength' => true]) ?>
          
-        <label class="control-label" for="dob">Conviction Date</label>      
+
+       
+    
+        
+    </div>
+        <div class="col-md-4 col-bottom-padding"> 
+      <?php echo $form->field($model, 'allegated_number')->textInput() ?>
+      
+      <?php echo $form->field($model, 'fir_number')->textInput(['maxlength' => true]) ?>
+
+     <?php echo $form->field($model, 'court_settlement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+
+            <label class="control-label" for="dob">Conviction Date</label>      
             <?=
         DatePicker::widget([
             'name' => 'conviction_date',
@@ -182,20 +223,7 @@ use kartik\date\DatePicker;
             ]
         ])
         ?> 
-       
-    
-        
-    </div>
-        <div class="col-md-4 col-bottom-padding"> 
-      <?php echo $form->field($model, 'allegated_number')->textInput() ?>
-      <?php echo $form->field($model, 'case_registered')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-      <?php echo $form->field($model, 'lawyer_name')->textInput(['maxlength' => true]) ?>
-      <?php echo $form->field($model, 'verdict')->textInput(['maxlength' => true]) ?>
-      <?php echo $form->field($model, 'asf_legel_support')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-     <?php echo $form->field($model, 'court_settlement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-     <?php echo $form->field($model, 'follow_up_call')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-    <?php echo $form->field($model, 'medical_legal_certificate')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-    <?php echo $form->field($model, 'convicted')->textInput(['maxlength' => true]) ?>
+             <?php echo $form->field($model, 'convicted')->textInput(['maxlength' => true]) ?>
         
     
           
@@ -208,22 +236,17 @@ use kartik\date\DatePicker;
   </div>
      <div class="col-md-4 col-bottom-padding">
      <?php echo $form->field($model, 'allegated_names')->textInput(['maxlength' => true]) ?>   
-     <?php echo $form->field($model, 'lawyer_provided')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+    
+
     <?php echo $form->field($model, 'police_station')->textInput(['maxlength' => true]) ?>  
-    <?php echo $form->field($model, 'fir_registered')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-    <?php echo $form->field($model, 'other_panel_section')->textInput(['maxlength' => true]) ?>    
-       
-    <?php echo $form->field($model, 'settlement_agreement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-   
-   <?php echo $form->field($model, 'other_document')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-       
+    <?php echo $form->field($model, 'verdict')->textInput(['maxlength' => true]) ?>
+     <?php echo $form->field($model, 'medical_legal_certificate')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
+
+    <?php echo $form->field($model, 'settlement_agreement')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>    
        
     <?php echo $form->field($model, 'settlement_monetary')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
        
-    <?php echo $form->field($model, 'picture')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-         
-    <?php echo $form->field($model, 'fir')->dropDownList([ 'yes' => 'Yes', 'no' => 'No', ], ['prompt' => 'Select']) ?>
-         </div>
+   </div>
     </div>
       </div>
          <div class="box box-success">

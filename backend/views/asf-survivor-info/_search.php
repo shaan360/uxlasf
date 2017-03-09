@@ -8,23 +8,36 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="asf-survivor-info-search">
+<div class="asf-survivor-info-search custom-box">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?php echo $form->field($model, 'id') ?>
-
-    <?php echo $form->field($model, 'attack_id') ?>
-
+    <div class="row">
+        <div class="col-md-4">
     <?php echo $form->field($model, 'survivor_id') ?>
+     
+   <?=  $form->field($model, 'attack_reason')->dropDownList(common\models\Lookup::items('attack_reason'), ['prompt' => 'Select']) ?>         
+   <?php echo $form->field($model, 'incident_province')->dropDownList([ 'Central Punjab' => 'Central Punjab', 'South Punjab' => 'South Punjab', 'Sindh' => 'Sindh', 'Balochistan' => 'Balochistan', 'KPK' => 'KPK', 'AJK' => 'AJK', ], ['prompt' => 'Select']) ?>
 
+        </div>
+            <div class="col-md-4">
+                
+    <?php echo $form->field($model, 'attack_id') ?>
     <?php echo $form->field($model, 'accident_suicide') ?>
+     <?php  echo $form->field($model, 'incident_province') ?>
 
+           
+</div>
+    <div class="col-md-4">
     <?php echo $form->field($model, 'survivor_stat') ?>
-
+       <?php echo $form->field($model, 'incident_district') ?>  
+        <?php echo $form->field($model, 'gender')->dropDownList([ 'male' => 'Male', 'female' => 'Female', 'other' => 'Other', ], ['prompt' => 'Select']) ?>
+    
+    </div>
+    </div>
     <?php // echo $form->field($model, 'asf_reported_day') ?>
 
     <?php // echo $form->field($model, 'asf_reported_month') ?>
@@ -71,7 +84,6 @@ use yii\bootstrap\ActiveForm;
 
     <?php // echo $form->field($model, 'victim_perpetrator') ?>
 
-    <?php // echo $form->field($model, 'attack_reason') ?>
 
     <?php // echo $form->field($model, 'allegated_number') ?>
 
