@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
+use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\AsfSurvivorInfo */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -57,7 +59,9 @@ use kartik\date\DatePicker;
     
    <?php echo $form->field($model, 'incident_area')->textInput(['maxlength' => true]) ?>
     <?php echo $form->field($model, 'incident_city')->textInput(['maxlength' => true]) ?>
-  <?=  $form->field($model, 'attack_reason')->dropDownList(common\models\Lookup::items('attack_reason'), ['prompt' => 'Select']) ?>         
+    <label>Attack reason</label>       
+     <?= Html::activeDropDownList($model, 'attack_reason',ArrayHelper::map(common\models\AsfReason::find()->all(), 'reason_type', 'reason_type'), ['prompt' => 'Select','class'=>'form-control']) ?>
+              
      
    </div>
    <div class="col-md-4 col-bottom-padding">
@@ -101,8 +105,10 @@ use kartik\date\DatePicker;
         ])
         ?>  
     <?php echo $form->field($model, 'maturity')->dropDownList([ 'Adult(18+)' => 'Adult(18+)','Minor(-17)' => 'Minor(-17)' ], ['prompt' => 'Select']) ?>
-    <?php echo $form->field($model, 'victim_perpetrator')->textInput(['maxlength' => true]) ?>
-
+    <label>Victim Perpetrator</label>       
+     <?= Html::activeDropDownList($model, 'victim_perpetrator',ArrayHelper::map(common\models\AsfPerpetrator::find()->all(), 'perpetrator_type', 'perpetrator_type'), ['prompt' => 'Select','class'=>'form-control']) ?>
+     
+   <?php echo $form->field($model, 'victim_number')->textInput() ?>
    </div>
 <div class="col-md-4 col-bottom-padding">        
     <?=  $form->field($model, 'accident_suicide')->dropDownList(common\models\Lookup::items('accident'), ['prompt' => 'Select']) ?> 
@@ -117,7 +123,8 @@ use kartik\date\DatePicker;
     <?php echo $form->field($model, 'attack_number')->textInput() ?>
     <?php echo $form->field($model, 'before_year')->textInput(['maxlength' => true]) ?>
  <?php echo $form->field($model, 'attacked_age')->textInput() ?>
-   <?php echo $form->field($model, 'victim_number')->textInput() ?>
+   <?php echo $form->field($model, 'perp_gender')->dropDownList([ 'male' => 'Male', 'female' => 'Female', 'other' => 'Other', ], ['prompt' => 'Select']) ?>
+   
 </div>
     </div>
      <div class="box box-success">

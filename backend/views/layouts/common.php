@@ -177,6 +177,8 @@ $bundle = BackendAsset::register($this);
                         'items' => [
                              ['label' => Yii::t('backend', 'Add Project'), 'url' => ['/asf-project/create'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Manage Project'), 'url' => ['/asf-project/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Add Reason'), 'url' => ['/asf-reason/create'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Manage Reason'), 'url' => ['/asf-reason/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Add Perpetrator'), 'url' => ['/asf-perpetrator/create'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Manage Perpetrator'), 'url' => ['/asf-perpetrator/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Add Hospital'), 'url' => ['/asf-hospital/create'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],

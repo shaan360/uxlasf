@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'attack_number',
             //'victim_number',
             //'victim_perpetrator',
-            //'attack_reason:ntext',
+            'attack_reason:ntext',
             //'allegated_number',
             //'allegated_names',
             'contact_phone',

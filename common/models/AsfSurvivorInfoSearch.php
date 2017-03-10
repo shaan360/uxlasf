@@ -42,7 +42,7 @@ class AsfSurvivorInfoSearch extends AsfSurvivorInfo
     public function search($params)
     {
         $query = AsfSurvivorInfo::find();
-
+      //  var_dump($query);exit;
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -50,7 +50,8 @@ class AsfSurvivorInfoSearch extends AsfSurvivorInfo
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
-
+      //   var_dump($query->prepare(Yii::$app->db->queryBuilder)->createCommand()->rawSql);
+//exit();
         $query->andFilterWhere([
             'id' => $this->id,
             'cnic' => $this->cnic,
@@ -129,7 +130,8 @@ class AsfSurvivorInfoSearch extends AsfSurvivorInfo
             ->andFilterWhere(['like', 'settlement_agreement', $this->settlement_agreement])
             ->andFilterWhere(['like', 'settlement_monetary', $this->settlement_monetary])
             ->andFilterWhere(['like', 'monetary_amount', $this->monetary_amount]);
-
+   // var_dump($query->prepare(Yii::$app->db->queryBuilder)->createCommand()->rawSql);
+//exit();
         return $dataProvider;
     }
 }

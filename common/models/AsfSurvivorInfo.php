@@ -93,7 +93,7 @@ class AsfSurvivorInfo extends \yii\db\ActiveRecord
         return 'asf_survivor_info';
     }
     public $pic, $pic2, $pic3, $pic4;
-    public $username;
+    public $perp_gender;
     public function behaviors() {
         return [
             'pic' => [
@@ -129,8 +129,8 @@ class AsfSurvivorInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['attack_id', 'survivor_id', 'accident_suicide', 'survivor_stat', 'asf_assisted', 'first_name', 'middle_name', 'last_name', 'cnic_availible', 'cnic', 'gender', 'before_year', 'attacked_age', 'maturity', 'incident_place', 'incident_area', 'incident_province', 'incident_district', 'incident_city', 'attack_number', 'victim_number', 'victim_perpetrator', 'attack_reason', 'allegated_number', 'allegated_names', 'contact_phone', 'current_age', 'survivor_address', 'address_street', 'follow_up_visit', 'case_registered', 'lawyer_provided', 'panel_code_section', 'case_number', 'other_panel_section', 'asf_legel_support', 'follow_up_call', 'actual_perpetrator_different', 'actual_perpetrator', 'convicted', 'verdict', 'fir_number', 'lawyer_name', 'literate', 'address_province', 'address_city', 'address_district', 'father_name', 'fir_registered', 'police_station', 'medical_legal_certificate','comments_remarks','court_settlement', 'settlement_agreement', 'settlement_monetary', 'monetary_amount'], 'required'],
-            [['accident_suicide', 'survivor_stat', 'asf_reported_day', 'asf_reported_month', 'asf_reported_mon', 'gender', 'maturity', 'incident_province', 'attack_reason', 'birth_day', 'birth_month', 'follow_up_visit', 'case_registered', 'lawyer_provided', 'panel_code_section', 'asf_legel_support', 'follow_up_call', 'actual_perpetrator_different', 'literate', 'address_province', 'fir_registered', 'other_document', 'medical_legal_certificate', 'picture', 'fir', 'comments_remarks', 'court_settlement', 'settlement_agreement', 'settlement_monetary'], 'string'],
+            [['attack_id', 'survivor_id', 'first_name', 'last_name', 'cnic', 'gender','attacked_age','attack_reason', 'father_name'], 'required'],
+            [['accident_suicide', 'survivor_stat','prep_gender','asf_reported_day', 'asf_reported_month', 'asf_reported_mon', 'gender', 'maturity', 'incident_province', 'attack_reason', 'birth_day', 'birth_month', 'follow_up_visit', 'case_registered', 'lawyer_provided', 'panel_code_section', 'asf_legel_support', 'follow_up_call', 'actual_perpetrator_different', 'literate', 'address_province', 'fir_registered', 'other_document', 'medical_legal_certificate', 'picture', 'fir', 'comments_remarks', 'court_settlement', 'settlement_agreement', 'settlement_monetary'], 'string'],
             [['cnic', 'attacked_age', 'attack_number', 'victim_number', 'allegated_number'], 'integer'],
             [['file_path','pic', 'pic2', 'pic3', 'pic4'], 'safe'],
             [['attack_id', 'survivor_id', 'asf_reported_year', 'asf_assisted', 'first_name', 'middle_name', 'last_name', 'cnic_availible', 'incident_date', 'before_year', 'incident_place', 'incident_area', 'incident_district', 'incident_city', 'victim_perpetrator', 'allegated_names', 'contact_phone', 'birth_year', 'current_age', 'survivor_address', 'address_street', 'case_number', 'other_panel_section', 'verdict_date', 'actual_perpetrator', 'conviction_date', 'convicted', 'verdict', 'fir_number', 'lawyer_name', 'fir_date', 'address_city', 'address_district', 'father_name', 'police_station', 'pictureFile', 'firFile', 'medicalFile', 'otherFile', 'monetary_amount'], 'string', 'max' => 255],

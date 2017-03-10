@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\AsfSurvivorInfoSearch */
@@ -16,27 +17,32 @@ use yii\bootstrap\ActiveForm;
     ]); ?>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
     <?php echo $form->field($model, 'survivor_id') ?>
-     
-   <?=  $form->field($model, 'attack_reason')->dropDownList(common\models\Lookup::items('attack_reason'), ['prompt' => 'Select']) ?>         
-   <?php echo $form->field($model, 'incident_province')->dropDownList([ 'Central Punjab' => 'Central Punjab', 'South Punjab' => 'South Punjab', 'Sindh' => 'Sindh', 'Balochistan' => 'Balochistan', 'KPK' => 'KPK', 'AJK' => 'AJK', ], ['prompt' => 'Select']) ?>
+            <label>Attack reason</label>       
+     <?= Html::activeDropDownList($model, 'attack_reason',ArrayHelper::map(common\models\AsfReason::find()->all(), 'reason_type', 'reason_type'), ['prompt' => 'Select','class'=>'form-control']) ?>
+        <?php echo $form->field($model, 'gender')->dropDownList([ 'male' => 'Male', 'female' => 'Female', 'other' => 'Other', ], ['prompt' => 'Select']) ?>
 
         </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 
     <?php echo $form->field($model, 'attack_id') ?>
-    <?php echo $form->field($model, 'accident_suicide') ?>
      <?php  echo $form->field($model, 'incident_province') ?>
+    <?php echo $form->field($model, 'panel_code_section')->dropDownList([ 302 => '302', 307 => '307', 324 => '324', 334 => '334', '336A' => '336A', '336B' => '336B', 337 => '337', '7-ata' => '7-ata', ], ['prompt' => 'Select','multiple' => true]) ?>
 
            
 </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
     <?php echo $form->field($model, 'survivor_stat') ?>
-       <?php echo $form->field($model, 'incident_district') ?>  
-        <?php echo $form->field($model, 'gender')->dropDownList([ 'male' => 'Male', 'female' => 'Female', 'other' => 'Other', ], ['prompt' => 'Select']) ?>
+     <?php echo $form->field($model, 'incident_province')->dropDownList([ 'Central Punjab' => 'Central Punjab', 'South Punjab' => 'South Punjab', 'Sindh' => 'Sindh', 'Balochistan' => 'Balochistan', 'KPK' => 'KPK', 'AJK' => 'AJK', ], ['prompt' => 'Select']) ?>
+
     
     </div>
+        <div class="col-md-3">
+                <?php echo $form->field($model, 'accident_suicide') ?>
+                   <?php echo $form->field($model, 'incident_district') ?>  
+
+        </div>
     </div>
     <?php // echo $form->field($model, 'asf_reported_day') ?>
 
